@@ -1,0 +1,22 @@
+<li class="nav-item">
+  <a 
+    class="nav-link {{unless this.isOpen 'collapsed'}}" 
+    href="#" 
+    aria-expanded="{{this.isOpen}}"
+    aria-controls="collapse{{@title}}"
+    data-toggle="collapse"
+    {{action 'toggle'}}
+  >
+    <i class="fas fa-fw fa-cog"></i>
+    <span>{{@title}}</span>
+  </a>
+  <div
+    class="collapsing" 
+    aria-labelledby="heading{{@title}}"
+    style={{style}}
+  >
+    <div class="bg-white py-2 collapse-inner rounded" {{did-insert this.setHeight}}>
+      {{yield}}
+    </div>
+  </div>
+</li>
