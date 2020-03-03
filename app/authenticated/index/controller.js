@@ -1,9 +1,23 @@
 import Controller from '@ember/controller';
+import { computed } from '@ember/object';
 
 export default class AuthenticatedIndexController extends Controller {
   constructor() {
     super(...arguments);
-    this.lineChartdata = {
+    this.pieOptions = {
+      cutoutPercentage: 55,
+      legend: {
+        position: 'bottom',
+        labels: {
+          usePointStyle: true
+        }
+      }
+    }
+  }
+
+  @computed('model')
+  get earningsChartData() {
+    return {
       labels: [
         'Jan',
         'Feb',
@@ -22,36 +36,23 @@ export default class AuthenticatedIndexController extends Controller {
         {
           pointBackgroundColor: 'rgba(0, 0, 0, 0.1)',
           label: 'Earnings',
-          data: [
-            0,
-            10000,
-            5000,
-            15000,
-            10000,
-            20000,
-            15000,
-            25000,
-            20000,
-            30000,
-            25000,
-            35000,
-            30000,
-            40000,
-          ],
+          data: this.model.earnings.mapBy('amount'),
           backgroundColor: 'rgba(78, 115, 223, .1)',
           borderColor: 'rgba(78, 115, 223, 1)',
           borderWidth: 3,
         },
       ],
     };
-    this.pieOptions = {
-      cutoutPercentage: 50,
-    }
-    this.pieChartdata = {
-      labels: ['Direct', 'Social', 'Referral'],
+  }
+
+
+  @computed('model')
+  get revenueSourceChartData() {
+    return {
+      labels: this.model.revenueSources.mapBy('type'),
       datasets: [
         {
-          data: [55, 30, 15],
+          data: this.model.revenueSources.mapBy('amount'),
           backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
         },
       ],
