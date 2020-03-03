@@ -1,0 +1,18 @@
+{{#if @label}}
+  <h4 class="small font-weight-bold">
+    {{@label}}
+    {{#if this.percentageRight}}
+      <span class="float-right">{{this.persentageRightLabel}}</span>
+    {{/if}}
+  </h4>
+{{/if}}
+<div class="progress" ...attributes>
+  <div
+    class={{barClassNames}}
+    role="progressbar"
+    style={{this.style}}
+    aria-valuenow={{@persentage}}
+    aria-valuemin="0"
+    aria-valuemax="100"
+  ></div>
+</div>
