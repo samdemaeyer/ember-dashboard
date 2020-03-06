@@ -4,7 +4,9 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function(defaults) {
   let app = new EmberApp(defaults, {
-    // Add options here
+    'ember-cli-string-helpers': {
+      only: ['html-safe'],
+    }
   });
 
   app.import('vendor/fontawesome-free/css/all.min.css');
