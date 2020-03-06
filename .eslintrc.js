@@ -11,6 +11,9 @@ module.exports = {
   plugins: [
     'ember'
   ],
+  globals: {
+    moment: true,
+  },
   extends: [
     'eslint:recommended',
     'plugin:ember/recommended'

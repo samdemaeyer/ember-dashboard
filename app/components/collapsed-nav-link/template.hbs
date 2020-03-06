@@ -1,17 +1,17 @@
 <li class="nav-item">
-  <a 
-    class="nav-link {{unless this.isOpen 'collapsed'}}" 
-    href="#" 
+  <a
+    class="nav-link {{unless this.isOpen 'collapsed'}}"
+    href="#"
     aria-expanded="{{this.isOpen}}"
     aria-controls="collapse{{@title}}"
     data-toggle="collapse"
-    {{action 'toggle'}}
+    {{on 'click' (fn this.toggle)}}
   >
     <i class="fas fa-fw fa-cog"></i>
     <span>{{@title}}</span>
   </a>
   <div
-    class="collapsing" 
+    class="collapsing"
     aria-labelledby="heading{{@title}}"
     style={{style}}
   >

@@ -26,4 +26,5 @@ export default function() {
 
   this.get('/earnings');
   this.get('/revenue-sources');
+  this.get('/messages');
 }
